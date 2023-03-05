@@ -1,0 +1,4 @@
+quarkus:
+  http:
+    port: 8181
+    root-path: /api/v1
