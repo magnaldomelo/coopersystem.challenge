@@ -4,7 +4,6 @@ O sistema de cotação do dolar consome uma API externa do Banco Central do Bras
 
 # Tecnologias utilizadas
 
-Foram desenvolvidos dois Microservices:
 
 Microservice A: Consome a API de Consulta do Dolar do BCB. Desenvolvida em Java com o Framework Quarkus, provê um endpoint de consulta, aplicando regras de validação e posteriormente buscando
 as informações de Cotação do Dollar no BCB.
@@ -15,9 +14,7 @@ curl --request GET \
   
 # swagger
 
-O Swagger foi utilizado em ambos os Microservices, podendo ser acessado pelas url's:
-
-Microservice A: 
+O Swagger foi utilizado no Microservice, podendo ser acessado pela url: 
 
 http://localhost:8080/q/swagger-ui
 
