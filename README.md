@@ -32,17 +32,11 @@ Microservice B:
 
 http://localhost:8080/q/swagger-ui
 
-# docker
-
-Foi utilizado o docker compose foi utilizado em ambos os Microservices. Podendo ser executado com o comando, em suas respectivas subpastas:
-
-docker-compose up
-
 # Executar Aplicação
 
 Caso deseje executar a aplicação de forma direta, sem o docker compose, basta executar o seguinte comando em suas respectivas pastas:
 
-./mvnw clean package -Dquarkus.container-image.build=true -DskipTests
+./mvnw quarkus:dev
 
 # Testes
 

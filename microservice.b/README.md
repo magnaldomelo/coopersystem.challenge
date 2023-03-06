@@ -18,17 +18,11 @@ O Swagger foi utilizado no Microservice, podendo ser acessado pela url:
 
 http://localhost:8080/q/swagger-ui
 
-# docker
-
-Foi utilizado o docker compose foi utilizado em ambos os Microservices:
-
-docker-compose up
-
 # Executar Aplicação
 
-Caso deseje executar a aplicação de forma direta, sem o docker compose, basta executar o seguinte comando:
+Caso deseje executar basta executar o seguinte comando em sua pasta:
 
-./mvnw clean package -Dquarkus.container-image.build=true -DskipTests
+./mvnw quarkus:dev
 
 # Testes
 
