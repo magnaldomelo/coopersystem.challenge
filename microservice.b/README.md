@@ -10,15 +10,8 @@ Microservice A: Consome a API de Consulta do Dolar do BCB. Desenvolvida em Java 
 as informações de Cotação do Dollar no BCB.
 
 curl --request GET \
-  --url 'http://localhost:8181/api/v1/dolar_cotacao?data_cotacao=03-03-2023' \
-  --header 'Content-Type: application/json'
-
-Microservice B: Serve de Proxy para os recursos do Microservice A, mas também aplica regras de validação. Foi desenvolvida com a mesma Stack do Microservice A.
-
-curl --request GET \
-  --url 'http://localhost:8080/api/v1/cotacao?data_cotacao=03-03-2023' \
-  --header 'Content-Type: application/json'
-  
+  --url 'http://localhost:8080/api/v1/dolar_cotacao?data_cotacao=03-03-2023' \
+  --header 'Content-Type: application/json'  
   
 # swagger
 
@@ -26,30 +19,21 @@ O Swagger foi utilizado em ambos os Microservices, podendo ser acessado pelas ur
 
 Microservice A: 
 
-http://localhost:8181/q/swagger-ui
-
-Microservice B:
-
 http://localhost:8080/q/swagger-ui
 
 # docker
 
-Foi utilizado o docker compose foi utilizado em ambos os Microservices. Podendo ser executado com o comando, em suas respectivas subpastas:
+Foi utilizado o docker compose foi utilizado em ambos os Microservices:
 
 docker-compose up
 
 # Executar Aplicação
 
-Caso deseje executar a aplicação de forma direta, sem o docker compose, basta executar o seguinte comando em suas respectivas pastas:
+Caso deseje executar a aplicação de forma direta, sem o docker compose, basta executar o seguinte comando:
 
 ./mvnw clean package -Dquarkus.container-image.build=true -DskipTests
 
 # Testes
 
-Foram desenvolvidos Testes Unitários apenas no Microservice A.
+Foram desenvolvidos Testes Unitários.
 Também foram feitos testes de integração para aferição das Regras de Validação.
-
-
-
-
-

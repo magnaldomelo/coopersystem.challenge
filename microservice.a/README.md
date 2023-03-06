@@ -1,59 +1,39 @@
-# microservice.a
+# Sistema de cotação do dolar
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+O sistema de cotação do dolar consome uma API externa do Banco Central do Brasil. 
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+# Tecnologias utilizadas
 
-## Running the application in dev mode
+Foram desenvolvidos dois Microservices:
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
-```
+Microservice A: Consome a API de Consulta do Dolar do BCB. Desenvolvida em Java com o Framework Quarkus, provê um endpoint de consulta, aplicando regras de validação e posteriormente buscando
+as informações de Cotação do Dollar no BCB.
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+curl --request GET \
+  --url 'http://localhost:8181/api/v1/dolar_cotacao?data_cotacao=03-03-2023' \
+  --header 'Content-Type: application/json'  
+  
+# swagger
 
-## Packaging and running the application
+O Swagger foi utilizado em ambos os Microservices, podendo ser acessado pelas url's:
 
-The application can be packaged using:
-```shell script
-./mvnw package
-```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+Microservice A: 
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+http://localhost:8181/q/swagger-ui
 
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
+# docker
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+Foi utilizado o docker compose foi utilizado em ambos os Microservices:
 
-## Creating a native executable
+docker-compose up
 
-You can create a native executable using: 
-```shell script
-./mvnw package -Pnative
-```
+# Executar Aplicação
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Pnative -Dquarkus.native.container-build=true
-```
+Caso deseje executar a aplicação de forma direta, sem o docker compose, basta executar o seguinte comando:
 
-You can then execute your native executable with: `./target/microservice.a-1.0.0-SNAPSHOT-runner`
+./mvnw clean package -Dquarkus.container-image.build=true -DskipTests
 
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
+# Testes
 
-## Related Guides
-
-
-## Provided Code
-
-### RESTEasy JAX-RS
-
-Easily start your RESTful Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+Foram desenvolvidos Testes Unitários.
+Também foram feitos testes de integração para aferição das Regras de Validação.
