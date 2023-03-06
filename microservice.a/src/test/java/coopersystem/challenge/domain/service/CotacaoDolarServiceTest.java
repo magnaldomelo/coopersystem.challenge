@@ -41,10 +41,8 @@ public class CotacaoDolarServiceTest {
 
     @Test
     void testGetCotacaoDolarDiaNaoUtil() {
-        val date = dataProximoDomingo();
-
         Throwable t = Assertions.assertThrows(BadRequestNotBusinessDayException.class, () -> cotacaoDolarService.findCotacaoDolar(
-                date.format(DateTimeFormatter.ofPattern(DATA_COTACAO_FORMAT))));
+                "03-05-2023"));
 
         Assertions.assertEquals(BadRequestNotBusinessDayException.class, t.getClass());
     }
